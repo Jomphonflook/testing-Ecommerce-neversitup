@@ -21,7 +21,7 @@ export class OrderController {
   }
 
   //GET LIST ORDER BY USER ID
-  @Get('/get-list-order/:id')
+  @Get('/get-list-order-by-userId/:id')
   async getListOrderByUserId(@Param('id') id: string, @Res() res: Response) {
     return this.orderService.getListOrder(id).then(val => {
       return res.status(val.result.status).send(val)
