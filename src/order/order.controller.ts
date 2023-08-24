@@ -39,7 +39,7 @@ export class OrderController {
   //Get Order By Order ID
   @Get('/:id')
   async getOrderById(@Param('id') id: string, @Res() res: Response) {
-    await this.orderService.getOrderById(id).then(val => {
+    return this.orderService.getOrderById(id).then(val => {
       return res.status(val.result.status).send(val)
     })
   }
@@ -51,7 +51,7 @@ export class OrderController {
     @Body() input: UpdateStatusOrderDto,
     @Res() res: Response
   ) {
-    await this.orderService.updateStatusOrder(id, input).then(val => {
+    return this.orderService.updateStatusOrder(id, input).then(val => {
       return res.status(val.result.status).send(val)
     })
   }
