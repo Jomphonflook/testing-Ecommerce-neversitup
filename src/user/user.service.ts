@@ -47,7 +47,9 @@ export class UserService {
   }
 
   async profile(id: string) {
-    const result = this.UserModel.findById(id)
+    const result = this.UserModel.findById(id).select({
+      password: 0
+    })
     return result
   }
 

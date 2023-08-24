@@ -13,6 +13,18 @@ export class ProductService {
   ) { }
 
   async create(createProductDto: CreateProductDto): Promise<IResponse> {
+
+    const checkNameProduct = await this.ProductModel.count({
+      name: createProductDto.name
+    })
+    if(checkNameProduct > 0){
+      return {
+        result : {
+          status : 400,
+          message: "duplicate name product"
+        }
+      }
+    }
     const resultCreateProduct = await new this.ProductModel(createProductDto).save()
     return {
       result: {
@@ -39,7 +51,7 @@ export class ProductService {
     return {
       result: {
         status: 200,
-        message: "get all product",
+        message: "get product by id",
         data: [result]
       }
     }

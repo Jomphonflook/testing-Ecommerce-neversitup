@@ -15,6 +15,6 @@ export class CreateUserDto {
 
     @IsDefined()
     @IsString()
-    @ApiProperty({ example: "3567xy" })
+    @ApiProperty({ example: "xy234786" })
     password: string
 }
